@@ -13,9 +13,10 @@ int main(int argv, char* args[])
     // Initialize SDL2
     SDL_Init(SDL_INIT_EVERYTHING);
     
-    // Create window, renderer and event objects
+    // Create window and renderer
     SDL_Window* window = SDL_CreateWindow("SDL Template", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+    // Create events
     SDL_Event event;
 
     // Game loop, loop while quit == false
