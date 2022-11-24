@@ -7,24 +7,25 @@
 int main(int argv, char* args[])
 {
     // Screen size
-    const int SCREEN_WIDTH  = 640;
-    const int SCREEN_HEIGHT = 480;
+    const int SCREEN_WIDTH = 1080;
+    const int SCREEN_HEIGHT = 600;
 
     // Initialize SDL2
     SDL_Init(SDL_INIT_EVERYTHING);
-    
+
     // Create window and renderer
-    SDL_Window* window = SDL_CreateWindow("SDL Template", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    // Create events
+    SDL_Window* window = SDL_CreateWindow("Flappy Bird", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT, 0);
+    SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, 0);
+    
+    // Events
     SDL_Event event;
 
-    // Game loop, loop while quit == false
+    // Game loop, loops while quit == false;
     bool quit = false;
     while (!quit)
     {
         // Loop through events
-        while (SDL_PollEvent(&event) != 0)
+        while (SDL_PollEvent(&event))
         {
             // Check for quit
             if (event.type == SDL_QUIT)
