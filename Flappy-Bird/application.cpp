@@ -12,6 +12,8 @@ Application::Application(int screenWidth, int screenHeight)
 	background = IMG_LoadTexture(renderer, "assets/images/background-day.png");
 
 	bird = new Bird(renderer);
+
+	spaceDown = -1;
 }
 
 void Application::clearScreen()
@@ -46,7 +48,7 @@ bool Application::handleEvents()
 		if (event.type == SDL_QUIT)
 		{
 			return true;
-		}		
+		}
 		if (event.type == SDL_KEYDOWN)
 		{
 			if (event.key.keysym.sym == SDLK_ESCAPE)

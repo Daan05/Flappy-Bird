@@ -32,4 +32,6 @@ private:
 	SDL_Texture* background;
 
 	Bird* bird;
+
+	int spaceDown;
 };

@@ -10,28 +10,47 @@ Bird::Bird(SDL_Renderer* renderer_)
 	speedY = 2;
 
 	rect = { int(x), int(y), 50, 50 };
-	texture = IMG_LoadTexture(renderer, "assets/images/yellowbird-downflap.png");
+	textures = { IMG_LoadTexture(renderer, "assets/images/yellowbird-downflap.png"),  IMG_LoadTexture(renderer, "assets/images/yellowbird-midflap.png"), IMG_LoadTexture(renderer, "assets/images/yellowbird-upflap.png") };
+
+	frame = 0;
 }
 
 void Bird::update()
 {
+	// Calculate bird angle
+	angle = -speedY * 4;
+	if (angle > 32)
+		angle = 32;
+
+	// Update bird position
 	speedY -= gravity;
 	y -= speedY;
-	//y = std::clamp(y, 0, 650);
 
+	// Get bird close to the screen
+	if (y < -50)
+		y = -50;
+	if (y > 650)
+		y = 650;
+
+	// Update the bird rect
 	rect = { int(x), int(y), 50, 50 };
 
-	std::cout << y << "\n";
+	// Increment the framecount, this is for fly animation
+	frame++;
+
+	// Temp, print y of bird
+	// std::cout << y << "\n";
 }
 
 void Bird::fly()
 {
-	speedY = 5;
+	speedY = 8;
 
 	rect = { int(x), int(y), 50, 50 };
+	std::cout << "fly" << "\n";
 }
 
 void Bird::draw()
 {
-	SDL_RenderCopyEx(renderer, texture, NULL, &rect, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, textures.at((frame / 10) % 3), NULL, &rect, angle, NULL, SDL_FLIP_NONE);
 }
