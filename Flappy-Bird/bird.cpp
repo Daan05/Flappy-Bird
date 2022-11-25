@@ -13,6 +13,7 @@ Bird::Bird(SDL_Renderer* renderer_)
 	textures = { IMG_LoadTexture(renderer, "assets/images/yellowbird-downflap.png"),  IMG_LoadTexture(renderer, "assets/images/yellowbird-midflap.png"), IMG_LoadTexture(renderer, "assets/images/yellowbird-upflap.png") };
 
 	frame = 0;
+	flapSpeed = 0;
 }
 
 void Bird::update()
@@ -21,6 +22,13 @@ void Bird::update()
 	angle = -speedY * 4;
 	if (angle > 32)
 		angle = 32;
+
+	if (speedY > 0)
+	{
+		flapSpeed = (2 * speedY - 8) * -2;
+	}
+	if (flapSpeed < 2)
+		flapSpeed = 2;
 
 	// Update bird position
 	speedY -= gravity;
@@ -52,5 +60,5 @@ void Bird::fly()
 
 void Bird::draw()
 {
-	SDL_RenderCopyEx(renderer, textures.at((frame / 10) % 3), NULL, &rect, angle, NULL, SDL_FLIP_NONE);
+	SDL_RenderCopyEx(renderer, textures.at((frame / int(flapSpeed)) % 3), NULL, &rect, angle, NULL, SDL_FLIP_NONE);
 }

@@ -28,6 +28,7 @@ int main(int argv, char* args[])
         // Update screen
         app.updateScreen();
 
+        // ~100 fps
         while (now + 10 > SDL_GetTicks())
         {
             SDL_Delay(1);

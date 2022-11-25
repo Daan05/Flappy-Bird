@@ -29,4 +29,5 @@ private:
 	const float gravity = 0.2;
 
 	Uint32 frame;
+	float flapSpeed;
 };
