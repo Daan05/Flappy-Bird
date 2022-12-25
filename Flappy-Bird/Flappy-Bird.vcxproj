@@ -133,10 +133,12 @@
     <ClCompile Include="application.cpp" />
     <ClCompile Include="bird.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="pipe.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application.h" />
     <ClInclude Include="bird.h" />
+    <ClInclude Include="pipe.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

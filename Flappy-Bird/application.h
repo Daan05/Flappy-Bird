@@ -1,10 +1,13 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <algorithm>
 
 #include <SDL.h>
 #include <SDL_image.h>
 
 #include "bird.h"
+#include "pipe.h"
 
 class Application
 {
@@ -20,6 +23,7 @@ public:
 
 	bool handleEvents();
 
+	void endScreen();
 	void exit();
 
 private:
@@ -32,6 +36,10 @@ private:
 	SDL_Texture* background;
 
 	Bird* bird;
+	std::vector<Pipe> pipes;
 
 	int spaceDown;
+
+	int score = 0;
+	bool collision = false;
 };

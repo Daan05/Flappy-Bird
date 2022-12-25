@@ -25,7 +25,7 @@ void Bird::update()
 
 	if (speedY > 0)
 	{
-		flapSpeed = (2 * speedY - 8) * -2;
+		flapSpeed = (2 * speedY - 8) * -1.2;
 	}
 	if (flapSpeed < 2)
 		flapSpeed = 2;
@@ -45,17 +45,13 @@ void Bird::update()
 
 	// Increment the framecount, this is for fly animation
 	frame++;
-
-	// Temp, print y of bird
-	// std::cout << y << "\n";
 }
 
 void Bird::fly()
 {
-	speedY = 8;
+	speedY = 6;
 
 	rect = { int(x), int(y), 50, 50 };
-	std::cout << "fly" << "\n";
 }
 
 void Bird::draw()

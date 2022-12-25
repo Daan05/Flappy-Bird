@@ -35,6 +35,8 @@ int main(int argv, char* args[])
         }
     }
 
+    app.endScreen();
+
     // Exit
     app.exit();
     return 0;
